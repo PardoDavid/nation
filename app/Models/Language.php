@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Language extends Model
+{
+    //la tabla a conectarse
+    protected $table ="languages";
+    //la clave priamaria de la tabla
+    protected $primaryKey="language_id";    
+    //omitir campos de auditoria
+    public $timestamps=false;
+    use HasFactory; 
+
+    public function countries(){
+        //BelongsToMany Method;
+        //Related Model
+        //pivot table(intermediate table)
+        //Foreign Key Current Model
+        //Foreign Key of related model
+        return $this->belongsToMany(Country::class,'country_languages','language_id','country_id');
+    }
+}
